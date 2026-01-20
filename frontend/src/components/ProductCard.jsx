@@ -46,10 +46,10 @@ export default function ProductCard({
         </button>
       </div>
 
-      {/* Loading indicator */}
-      {isLoading && (
-        <p className="loading-text">Updating…</p>
-      )}
+      <p className={`loading-text ${isLoading ? 'visible' : ''}`}>
+        Updating...
+      </p>
+
     </div>
   )
 }
