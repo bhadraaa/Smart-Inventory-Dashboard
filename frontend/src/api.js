@@ -1,17 +1,18 @@
+const API_BASE = 'https://smart-inventory-backend.onrender.com'
+
 export async function fetchProducts() {
-  const res = await fetch('http://localhost:5000/products')
+  const res = await fetch(`${API_BASE}/products`)
   if (!res.ok) throw new Error('Failed to fetch products')
   return res.json()
 }
 
 export async function updateStock(id, newQuantity) {
-  const res = await fetch('http://localhost:5000/update-stock', {
+  const res = await fetch(`${API_BASE}/update-stock`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id, newQuantity })
   })
 
-  // ❗ Do NOT assume JSON on error
   if (!res.ok) {
     const text = await res.text()
     throw new Error(
@@ -23,4 +24,3 @@ export async function updateStock(id, newQuantity) {
 
   return res.json()
 }
-

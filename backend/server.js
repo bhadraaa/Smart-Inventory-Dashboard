@@ -6,20 +6,13 @@ const path = require('path')
 const app = express()
 const PORT = 5000
 
-// --------------------
-// MIDDLEWARE
-// --------------------
+
 app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.json())
 
-// --------------------
-// JSON FILE PATH
-// --------------------
+
 const dataPath = path.join(__dirname, 'data', 'products.json')
 
-// --------------------
-// HELPERS
-// --------------------
 function readProducts() {
   const data = fs.readFileSync(dataPath, 'utf-8')
   return JSON.parse(data)
@@ -33,16 +26,11 @@ function writeProducts(products) {
   )
 }
 
-// --------------------
-// ROUTES
-// --------------------
-
-// Health check
 app.get('/', (req, res) => {
   res.send('Backend is running')
 })
 
-// GET all products
+
 app.get('/products', (req, res) => {
   try {
     const products = readProducts()
@@ -53,7 +41,6 @@ app.get('/products', (req, res) => {
   }
 })
 
-// UPDATE stock
 app.post('/update-stock', (req, res) => {
   try {
     let { id, newQuantity } = req.body
@@ -85,7 +72,7 @@ app.post('/update-stock', (req, res) => {
     products[index].quantity = newQuantity
     writeProducts(products)
 
-    // ✅ Return FULL updated product
+
     res.json(products[index])
   } catch (err) {
     console.error('UPDATE ERROR:', err)
@@ -95,9 +82,6 @@ app.post('/update-stock', (req, res) => {
   }
 })
 
-// --------------------
-// START SERVER
-// --------------------
 app.listen(PORT, () => {
-  console.log(`✅ Backend running on http://localhost:${PORT}`)
+  console.log(`Backend running on http://localhost:${PORT}`)
 })
