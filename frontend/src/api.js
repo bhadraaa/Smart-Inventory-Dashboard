@@ -2,7 +2,7 @@ const API_BASE = 'https://smart-inventory-dashboard-1-9ekt.onrender.com'
 
 export async function fetchProducts() {
   const res = await fetch(`${API_BASE}/products`)
-  if (!res.ok) throw new Error('Failed to fetch products')
+  if (!res.ok) throw new Error('Failed to fetch productsss')
   return res.json()
 }
 
