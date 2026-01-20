@@ -102,11 +102,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Loading text */
 .loading-text {
-  margin-top: 8px;
+  height: 18px;          /* reserve space */
   font-size: 12px;
   color: #888;
+  margin-top: 6px;
+  opacity: 0;            /* hidden by default */
+  transition: opacity 0.2s ease;
+}
+
+.loading-text.visible {
+  opacity: 1;            /* show only when loading */
 }
 
 /* Page loading */
