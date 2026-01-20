@@ -1,4 +1,4 @@
-const API_BASE = 'https://smart-inventory-backend.onrender.com'
+const API_BASE = 'https://smart-inventory-dashboard-1-9ekt.onrender.com'
 
 export async function fetchProducts() {
   const res = await fetch(`${API_BASE}/products`)
@@ -15,11 +15,7 @@ export async function updateStock(id, newQuantity) {
 
   if (!res.ok) {
     const text = await res.text()
-    throw new Error(
-      res.status === 500
-        ? 'Server error while updating stock'
-        : text
-    )
+    throw new Error(text)
   }
 
   return res.json()
