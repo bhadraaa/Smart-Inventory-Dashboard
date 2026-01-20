@@ -4,14 +4,13 @@ const fs = require('fs')
 const path = require('path')
 
 const app = express()
-const PORT = 5000
-
-
-app.use(cors({ origin: 'http://localhost:5173' }))
+const PORT = process.env.PORT || 5000   
+app.use(cors())
 app.use(express.json())
 
 
 const dataPath = path.join(__dirname, 'data', 'products.json')
+
 
 function readProducts() {
   const data = fs.readFileSync(dataPath, 'utf-8')
@@ -26,10 +25,10 @@ function writeProducts(products) {
   )
 }
 
+
 app.get('/', (req, res) => {
   res.send('Backend is running')
 })
-
 
 app.get('/products', (req, res) => {
   try {
@@ -72,7 +71,6 @@ app.post('/update-stock', (req, res) => {
     products[index].quantity = newQuantity
     writeProducts(products)
 
-
     res.json(products[index])
   } catch (err) {
     console.error('UPDATE ERROR:', err)
@@ -82,6 +80,7 @@ app.post('/update-stock', (req, res) => {
   }
 })
 
+
 app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`)
+  console.log(`Backend running on port ${PORT}`)
 })
