@@ -53,7 +53,6 @@ export default function App() {
   return (
     <div className="container">
       <h1>Smart Inventory Dashboard</h1>
-      <h2>products Info</h2>
       <ProductGrid
         products={products}
         loadingId={loadingId}
