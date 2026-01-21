@@ -10,7 +10,7 @@ The application allows a retail store manager to:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Frontend:** React (Vite), CSS
 - **Backend:** Node.js, Express
@@ -18,7 +18,7 @@ The application allows a retail store manager to:
 
 ---
 
-## 📦 Features
+## Features
 
 - Responsive product grid layout
 - Product cards with name, price, and stock quantity
@@ -30,7 +30,7 @@ The application allows a retail store manager to:
 
 ---
 
-## 🔍 Design & Engineering Decisions
+##  Design & Engineering Decisions
 
 - Used a **local JSON file** for persistence to focus on business logic rather than database configuration, as suggested in the task.
 - Kept components small and focused (`ProductCard`, `ProductGrid`) for clarity and maintainability.
@@ -40,7 +40,7 @@ The application allows a retail store manager to:
 
 ---
 
-## 🚀 Running the Project Locally
+##  Running the Project Locally
 
 ### Backend
 ```bash
